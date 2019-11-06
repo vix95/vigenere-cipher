@@ -7,70 +7,23 @@ import java.util.Scanner;
 
 public class VignereCipher {
     private int m = 26; // chars qty
-    private int key_chars_qty;
-    private String key;
-    private char[][] cipher_array = new char[26][26];
+    private char[] key;
 
     public VignereCipher() {
-        this.prepareArrayForCipher();
     }
 
     VignereCipher(String key) {
-        this.key = key;
-        this.key_chars_qty = key.length();
-        this.prepareArrayForCipher();
+        this.key = key.toCharArray();
     }
 
-    public int getKey_chars_qty() {
-        return key_chars_qty;
-    }
-
-    private void prepareArrayForCipher() {
-        for (int i = 0; i < this.m; i++) {
-            for (int j = 0; j < this.m; j++) {
-                int offset = i + j;
-                if (offset >= this.m) offset -= this.m;
-
-                cipher_array[i][j] = (char) ('a' + offset);
-            }
-        }
-
-        // print for debug
-        /* for (int i = 0; i < this.m; i++) {
-            if (i < 10) System.out.print(' ');
-            System.out.print(i + ": ");
-            for (int j = 0; j < this.m; j++) {
-                System.out.print(Character.toString(cipher_array[i][j]) + ' ');
-            }
-
-            System.out.print('\n');
-        } */
-    }
-
-    private char[] prepareKeyForLine(char[] line) {
-        char[] prepared_key = new char[line.length];
-        int j = 0;
-        for (int i = 0; i < line.length; i++) {
-            if (Character.isLetter(line[i])) {
-                prepared_key[i] = key.toCharArray()[j];
-                j++;
-
-                if (j == key.length()) j = 0;
-            } else {
-                prepared_key[i] = ' ';
-            }
-        }
-
-        return prepared_key;
-    }
-
-    private char[] encrypt(char[] line, char[] key) {
+    private char[] encrypt(char[] line) {
         char[] encrypted_line = new char[line.length];
-        for (int i = 0; i < line.length; i++) {
-            int row = line[i] - 'a'; // plain
-            int col = key[i] - 'a'; // key
-
-            if (Character.isLetter(line[i])) encrypted_line[i] = this.cipher_array[row][col];
+        for (int i = 0, j = 0; i < line.length; i++) {
+            int int_line = line[i] - 'a'; // plain
+            if (Character.isLetter(line[i])) {
+                encrypted_line[i] = (char) (((int_line + (key[j] - 'a')) % this.m) + 'a');
+                j = ++j % this.key.length; // key factor
+            }
         }
 
         return encrypted_line;
@@ -83,7 +36,7 @@ public class VignereCipher {
 
             while (scanner.hasNextLine()) {
                 char[] line = scanner.nextLine().toCharArray();
-                char[] encrypted_line = this.encrypt(line, this.prepareKeyForLine(line));
+                char[] encrypted_line = this.encrypt(line);
 
                 System.out.println("plain line: " + String.valueOf(line));
                 System.out.println("encrypted line: " + String.valueOf(encrypted_line) + "\n");
@@ -97,22 +50,13 @@ public class VignereCipher {
         }
     }
 
-    private int findLetter(int row, char c) {
-        for (int i = 0; i < cipher_array[row].length; i++) {
-            if (cipher_array[row][i] == c) return i;
-        }
-
-        return 0;
-    }
-
-    private char[] decrypt(char[] line, char[] key) {
+    private char[] decrypt(char[] line) {
         char[] decrypted_line = new char[line.length];
-        for (int i = 0; i < line.length; i++) {
+        for (int i = 0, j = 0; i < line.length; i++) {
             if (Character.isLetter(line[i])) {
-                int row = key[i] - 'a'; // key
-                int col = this.findLetter(row, line[i]); // encrypted
-
-                decrypted_line[i] = this.cipher_array[0][col];
+                char encrypted = (char) (((line[i] - 'a') - (key[j] - 'a') + this.m) % this.m + 'a'); // encrypted
+                decrypted_line[i] = encrypted;
+                j = ++j % this.key.length; // key factor
             }
         }
 
@@ -126,7 +70,7 @@ public class VignereCipher {
 
             while (scanner.hasNextLine()) {
                 char[] line = scanner.nextLine().toCharArray();
-                char[] decrypted_line = this.decrypt(line, this.prepareKeyForLine(line));
+                char[] decrypted_line = this.decrypt(line);
 
                 System.out.println("encrypted line: " + String.valueOf(line));
                 System.out.println("decrypted line: " + String.valueOf(decrypted_line) + "\n");
@@ -155,7 +99,7 @@ public class VignereCipher {
             // find the key
             if (!found_key) {
                 for (int key = 1; key < 20; key++) {
-                    this.key = "1";
+                    //this.key = ;
                     //decrypted_line = this.decrypt(line);
 
                     if (String.valueOf(decrypted_line).contains(String.valueOf(template))) {

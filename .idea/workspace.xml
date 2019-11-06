@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="404bb3be-2c00-4bfb-a701-710d8a917653" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Vix.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vigenere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vigenere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VigenereMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VigenereMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vigenere-cipher/VignereCipher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vigenere-cipher/VignereCipher.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/VignereCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VignereCipher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_files/crypto.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/crypto.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_files/decrypt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/decrypt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_files/key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/key.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_files/orig.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/orig.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_files/plain.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/plain.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,6 +13,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -31,6 +29,9 @@
   </component>
   <component name="MavenRunner">
     <option name="delegateBuildToMaven" value="true" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1T3cGcDRQjcqxJsw2rue9dkJAFP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -80,11 +81,34 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="(char) (((line[i] - 'a') - int_key + 26) % 26 + 'a')" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="masterDetails">
     <states>
