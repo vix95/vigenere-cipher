@@ -131,7 +131,7 @@ class VignereCipher {
             }
         }
 
-        System.out.printf("The key is: '%s' for stddev = %f\n", keys.get(index), min);
+        System.out.printf("The key is: '%s' for stddev = %f\n\n", keys.get(index), min);
         this.key = keys.get(index).toCharArray();
 
         return found_key;
@@ -139,35 +139,47 @@ class VignereCipher {
 
     void breakCipher(final String path) throws IOException {
         Scanner scanner = new Scanner(new File(path + "/crypto.txt"));
-        char[] encrypted = new char[0];
+        char[] deccrypted = new char[0];
 
         while (scanner.hasNextLine()) {
             char[] line = scanner.nextLine().toCharArray();
-            char[] temp = encrypted;
-            encrypted = new char[temp.length + line.length + 1]; // +1 for the space
+            char[] temp = deccrypted;
+            deccrypted = new char[temp.length + line.length + 1]; // +1 for the space
 
             // first copy already available encrypted text
             int pos = 0;
             for (char c : temp) {
-                encrypted[pos++] = c;
+                deccrypted[pos++] = c;
             }
 
             // next assign characters from line to collect every in one array
             for (char c : line) {
-                encrypted[pos++] = c;
+                deccrypted[pos++] = c;
             }
 
-            encrypted[pos] = ' '; // add space for clear view
+            deccrypted[pos] = ' '; // add space for clear view
         }
 
         scanner.close();
 
-        if (this.cryptanalysis(encrypted)) {
-            System.out.println("encrypted line: " + String.valueOf(encrypted));
-            System.out.println("decrypted line: " + String.valueOf(encrypted) + "\n");
+        if (this.cryptanalysis(deccrypted)) {
+            char[] encrypted = this.decrypt(deccrypted);
+            System.out.printf("decrypted line: %s\n", String.valueOf(deccrypted));
+            System.out.printf("encrypted line: %s\n", String.valueOf(encrypted));
+
+            // build the string from every character form key array
+            StringBuilder builder = new StringBuilder();
+            for (char c : key) {
+                if (Character.isLetter(c)) {
+                    builder.append(c);
+                }
+            }
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(path + "/decrypt.txt"));
             BufferedWriter writerKey = new BufferedWriter(new FileWriter(path + "/key-crypto.txt"));
+
+            writer.write(encrypted);
+            writerKey.write(builder.toString());
 
             writer.close();
             writerKey.close();
