@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="404bb3be-2c00-4bfb-a701-710d8a917653" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vigenere-cipher/Vigenere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vigenere-cipher/Vigenere.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/vigenere-cipher/VignereCipher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vigenere-cipher/VignereCipher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vigenere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vigenere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/VignereCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VignereCipher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_files/plain.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/plain.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_files/crypto.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/crypto.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_files/decrypt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/decrypt.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_files/key-crypto.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/key-crypto.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,8 +37,11 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1T3cGcDRQjcqxJsw2rue9dkJAFP" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572342671711" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -103,12 +109,34 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="(char) (((line[i] - 'a') - int_key + 26) % 26 + 'a')" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/VignereCipher.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/VignereCipher.java</url>
+          <line>223</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/VignereCipher.java</url>
+          <line>189</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/VignereCipher.java</url>
+          <line>200</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>

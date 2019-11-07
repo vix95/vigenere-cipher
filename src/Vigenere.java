@@ -13,6 +13,9 @@ public class Vigenere {
             String cmd;
             String key;
 
+            VignereCipher vignereCipher2 = new VignereCipher();
+            vignereCipher2.breakCipher(path);
+
             do {
                 cmd = vigenereMenu.readInput();
                 if (cmd != null && !cmd.equals("-q")) {
@@ -38,7 +41,9 @@ public class Vigenere {
                             }
 
                             break;
-                        case "-k":  // find key
+                        case "-k":  // break key
+                            VignereCipher vignereCipher = new VignereCipher();
+                            vignereCipher.breakCipher(path);
                             break;
                     }
                 }
