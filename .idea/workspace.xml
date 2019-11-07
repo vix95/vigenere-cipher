@@ -4,9 +4,14 @@
     <list default="true" id="404bb3be-2c00-4bfb-a701-710d8a917653" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/vigenere-cipher/Vigenere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vigenere-cipher/Vigenere.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vigenere-cipher/VignereCipher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vigenere-cipher/VignereCipher.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vigenere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vigenere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/VignereCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VignereCipher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_files/crypto.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/crypto.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_files/decrypt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/decrypt.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_files/key-crypto.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/key-crypto.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_files/orig.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/orig.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_files/plain.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/plain.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,30 +115,11 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/VignereCipher.java</url>
-          <line>105</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/VignereCipher.java</url>
-          <line>235</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/VignereCipher.java</url>
-          <line>201</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/VignereCipher.java</url>
-          <line>212</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="deccrypted" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="masterDetails">
     <states>

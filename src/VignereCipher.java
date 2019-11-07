@@ -8,7 +8,7 @@ import java.util.Scanner;
 class VignereCipher {
     private int m = 26; // chars qty
     private char[] key;
-    private final static int num_trials = 40;
+    private final static int num_trials = 15;
     private ArrayList<String> keys = new ArrayList<>(); // keys, it's related with standard deviation
 
     private final static int[] freq = { // frequency of every character; taken from wiki
@@ -152,12 +152,19 @@ class VignereCipher {
                 deccrypted[pos++] = c;
             }
 
+            if (temp.length != 0) {
+                pos++;
+            }
+
             // next assign characters from line to collect every in one array
             for (char c : line) {
                 deccrypted[pos++] = c;
             }
+        }
 
-            deccrypted[pos] = ' '; // add space for clear view
+        StringBuilder builder2 = new StringBuilder();
+        for (char c : deccrypted) {
+            System.out.print(c);
         }
 
         scanner.close();
