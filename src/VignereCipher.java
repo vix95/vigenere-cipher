@@ -8,7 +8,7 @@ import java.util.Scanner;
 class VignereCipher {
     private int m = 26; // chars qty
     private char[] key;
-    private final static int num_trials = 15;
+    private final static int num_trials = 30;
     private ArrayList<String> keys = new ArrayList<>(); // keys, it's related with standard deviation
 
     private final static int[] freq = { // frequency of every character; taken from wiki
@@ -139,39 +139,30 @@ class VignereCipher {
 
     void breakCipher(final String path) throws IOException {
         Scanner scanner = new Scanner(new File(path + "/crypto.txt"));
-        char[] deccrypted = new char[0];
+        ArrayList<String> lines = new ArrayList<>();
 
-        while (scanner.hasNextLine()) {
-            char[] line = scanner.nextLine().toCharArray();
-            char[] temp = deccrypted;
-            deccrypted = new char[temp.length + line.length + 1]; // +1 for the space
+        while (scanner.hasNextLine()) lines.add(scanner.nextLine());
 
-            // first copy already available encrypted text
-            int pos = 0;
-            for (char c : temp) {
-                deccrypted[pos++] = c;
+        // get the length of array
+        int array_length = 0;
+        for (String s : lines) array_length += s.length();
+
+        char[] decrypted = new char[array_length + lines.size() - 1];
+
+        int pos = 0;
+        for (String s : lines) {
+            for (char c : s.toCharArray()) {
+                if (Character.isLetter(c)) decrypted[pos++] = c;
+                else decrypted[pos++] = ' ';
             }
-
-            if (temp.length != 0) {
-                pos++;
-            }
-
-            // next assign characters from line to collect every in one array
-            for (char c : line) {
-                deccrypted[pos++] = c;
-            }
-        }
-
-        StringBuilder builder2 = new StringBuilder();
-        for (char c : deccrypted) {
-            System.out.print(c);
+            pos++;
         }
 
         scanner.close();
 
-        if (this.cryptanalysis(deccrypted)) {
-            char[] encrypted = this.decrypt(deccrypted);
-            System.out.printf("decrypted line: %s\n", String.valueOf(deccrypted));
+        if (this.cryptanalysis(decrypted)) {
+            char[] encrypted = this.decrypt(decrypted);
+            System.out.printf("decrypted line: %s\n", String.valueOf(decrypted));
             System.out.printf("encrypted line: %s\n", String.valueOf(encrypted));
 
             // build the string from every character form key array
@@ -185,7 +176,7 @@ class VignereCipher {
             BufferedWriter writer = new BufferedWriter(new FileWriter(path + "/decrypt.txt"));
             BufferedWriter writerKey = new BufferedWriter(new FileWriter(path + "/key-crypto.txt"));
 
-            writer.write(encrypted);
+            writer.write(decrypted);
             writerKey.write(builder.toString());
 
             writer.close();

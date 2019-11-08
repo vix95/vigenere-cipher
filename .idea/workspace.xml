@@ -10,8 +10,7 @@
       <change beforePath="$PROJECT_DIR$/test_files/crypto.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/crypto.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_files/decrypt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/decrypt.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_files/key-crypto.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/key-crypto.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_files/orig.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/orig.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_files/plain.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/plain.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_files/key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test_files/key.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
