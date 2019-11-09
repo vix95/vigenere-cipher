@@ -70,7 +70,7 @@ public class Vigenere {
     }
 
     private static String prepareLine(String line) {
-        return line.replaceAll("[^a-zA-Z ]+", "").toLowerCase();
+        return line.replaceAll("[^a-zA-Z]+", "").toLowerCase();
     }
 
     private static String readKey() throws FileNotFoundException {

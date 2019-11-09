@@ -11,8 +11,10 @@ class VignereCipher {
     private final static int num_trials = 30;
     private ArrayList<String> keys = new ArrayList<>(); // keys, it's related with standard deviation
 
-    private final static int[] freq = { // frequency of every character; taken from wiki
-            82, 15, 28, 43, 127, 22, 20, 61, 70, 2, 8, 40, 24, 67, 75, 29, 1, 60, 63, 91, 28, 10, 23, 1, 20, 1
+    private final static double[] freq = { // frequency of every character; taken from wiki
+            0.082, 0.015, 0.028, 0.043, 0.127, 0.022, 0.020, 0.061, 0.070,
+            0.002, 0.008, 0.040, 0.024, 0.067, 0.075, 0.029, 0.001, 0.060,
+            0.063, 0.091, 0.028, 0.010, 0.023, 0.001, 0.020, 0.001
     };
 
     VignereCipher() {
@@ -115,7 +117,7 @@ class VignereCipher {
             }
 
             keys.add(builder.toString());
-            System.out.printf("%f, key length: %2d - %s\n", fit, j, builder.toString());
+            //System.out.printf("%f, key length: %2d - %s\n", fit, j, builder.toString());
             if (fit < best_fit) best_fit = fit;
         }
 
@@ -131,7 +133,7 @@ class VignereCipher {
             }
         }
 
-        System.out.printf("The key is: '%s' for stddev = %f\n\n", keys.get(index), min);
+        System.out.printf("The key is: '%s' for stddev(fit) = %f\n\n", keys.get(index), min);
         this.key = keys.get(index).toCharArray();
 
         return found_key;
@@ -147,23 +149,28 @@ class VignereCipher {
         int array_length = 0;
         for (String s : lines) array_length += s.length();
 
-        char[] decrypted = new char[array_length + lines.size() - 1];
+        if (array_length == 0) {
+            System.out.print("No text to decrypt\n");
+            return;
+        }
+
+        char[] encrypted = new char[array_length + lines.size() - 1];
 
         int pos = 0;
         for (String s : lines) {
             for (char c : s.toCharArray()) {
-                if (Character.isLetter(c)) decrypted[pos++] = c;
-                else decrypted[pos++] = ' ';
+                if (Character.isLetter(c)) encrypted[pos++] = c;
+                else encrypted[pos++] = ' ';
             }
             pos++;
         }
 
         scanner.close();
 
-        if (this.cryptanalysis(decrypted)) {
-            char[] encrypted = this.decrypt(decrypted);
-            System.out.printf("decrypted line: %s\n", String.valueOf(decrypted));
+        if (this.cryptanalysis(encrypted)) {
+            char[] decrypted = this.decrypt(encrypted);
             System.out.printf("encrypted line: %s\n", String.valueOf(encrypted));
+            System.out.printf("decrypted line: %s\n", String.valueOf(decrypted));
 
             // build the string from every character form key array
             StringBuilder builder = new StringBuilder();
@@ -208,6 +215,7 @@ class VignereCipher {
             }
 
             // looking for the best fit
+            // less fit is better fit
             if (best_fit == 0) {
                 best_fit = fit;
                 best_offset = offset;
@@ -221,8 +229,7 @@ class VignereCipher {
     }
 
     private double frequencyEveryPosition(final int[] encrypted, int len, int offset, char[] key) {
-        double d;
-        double[] accu = new double[this.m];
+        double[] accurate = new double[this.m];
 
         for (int j = 0; j < offset; j++) {
             int[] freq_chars = new int[this.m]; // frequency of every char
@@ -240,21 +247,22 @@ class VignereCipher {
                 System.out.print(e.getMessage());
             }
 
-            for (int i = 0; i < this.m; i++)
-                accu[i] += freq_chars[(i + match) % this.m];
+            // looking for accurate for matched char
+            for (int i = 0; i < this.m; i++) accurate[i] += freq_chars[(i + match) % this.m];
         }
 
+        // sum of accurate
         double sum = 0;
-        for (int i = 0; i < this.m; i++)
-            sum += accu[i];
+        for (int i = 0; i < this.m; i++) sum += accurate[i];
 
-        double ret = 0;
+        // retrieve the fit
+        double fit = 0;
         for (int i = 0; i < this.m; i++) {
-            d = accu[i] / sum - freq[i];
-            ret += d * d / freq[i];
+            double d = accurate[i] / sum - freq[i];
+            fit += d * d / freq[i];
         }
 
         key[offset] = '\0';
-        return ret;
+        return fit;
     }
 }
